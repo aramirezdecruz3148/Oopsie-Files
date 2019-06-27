@@ -16,6 +16,10 @@ describe('creating friends files', () => {
     });
   });
 
+  afterAll(done => {
+    fs.rmdir('./fixtures', done);
+  });
+
   it('returns random animal species', () => {
     const animal = getAnimal();
     expect(animal).toEqual(expect.any(String));

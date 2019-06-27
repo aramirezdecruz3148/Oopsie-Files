@@ -27,6 +27,10 @@ describe('rename files', () => {
     });
   });
 
+  afterAll(done => {
+    fs.rmdir('./fixtures', done);
+  });
+
   it('gets all files in fixtures directory', done => {
     readDirectory('./fixtures', (err, files) => {
       expect(files).toHaveLength(100);
