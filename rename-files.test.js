@@ -4,7 +4,8 @@ const {
   readDirectory, 
   rename, 
   getModifiedTime,
-  readFile 
+  readFile, 
+  renameEverything
 } = require('./rename-files');
 
 describe('rename files', () => {
@@ -59,6 +60,20 @@ describe('rename files', () => {
       readFile('./fixtures/0.txt', (err, resultContent) => {
         expect(err).toBeFalsy();
         expect(resultContent).toEqual(expectedContent);
+        done();
+      });
+    });
+  });
+
+  it('renames all files to content-fileNumber-date', done => {
+    renameEverything('./fixtures', err => {
+      expect(err).toBeFalsy();
+
+      fs.readdir('./fixtures', (err, files) => {
+        expect(files).toHaveLength(100);
+        files.forEach(file => {
+          expect(file).toMatch(/\w+-\d+-\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d+Z/);
+        });
         done();
       });
     });

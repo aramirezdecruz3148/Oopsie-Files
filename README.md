@@ -9,5 +9,5 @@ Helping a fictional friend to rename a large batch of files
 1. ~~rename a file~~
 1. ~~get last modified date of a file~~
 1. ~~get files content~~
-1. rename all files as `content-oldFileNumber-date`
+1. ~~rename all files as `content-oldFileNumber-date`~~
 
