@@ -3,7 +3,8 @@ const { createFiles } = require('./create-files');
 const { 
   readDirectory, 
   rename, 
-  getModifiedTime  
+  getModifiedTime,
+  readFile 
 } = require('./rename-files');
 
 describe('rename files', () => {
@@ -50,6 +51,16 @@ describe('rename files', () => {
       expect(err).toBeFalsy();
       expect(modifiedTime).toEqual(expect.any(String));
       done();
+    });
+  });
+
+  it('gets the contents of a file', done => {
+    fs.readFile('./fixtures/0.txt', { encoding: 'utf8' }, (err, expectedContent) => {
+      readFile('./fixtures/0.txt', (err, resultContent) => {
+        expect(err).toBeFalsy();
+        expect(resultContent).toEqual(expectedContent);
+        done();
+      });
     });
   });
 });

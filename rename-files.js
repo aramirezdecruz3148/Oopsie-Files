@@ -18,8 +18,15 @@ const getModifiedTime = (path, callback) => {
   });
 };
 
+const readFile = (path, callback) => {
+  fs.readFile(path, { encoding: 'utf8' }, (err, file) => {
+    callback(err, file);
+  });
+};
+
 module.exports = {
   readDirectory,
   rename, 
-  getModifiedTime
+  getModifiedTime, 
+  readFile
 };
