@@ -12,7 +12,14 @@ const rename = (path, newPath, callback) => {
   });
 };
 
+const getModifiedTime = (path, callback) => {
+  fs.stat(path, (err, stats) => {
+    callback(err, stats && stats.mtime.toISOString());
+  });
+};
+
 module.exports = {
   readDirectory,
-  rename
+  rename, 
+  getModifiedTime
 };
