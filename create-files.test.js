@@ -7,7 +7,8 @@ describe('creating friends files', () => {
       if(files.length === 0) done();
       let deletedSoFar = 0;
       files.forEach(file => {
-        fs.unlink(`./fixtures/${file}`, () => {
+        fs.unlink(`./fixtures/${file}`, err => {
+          if(err) return done(err);
           deletedSoFar += 1;
           if(deletedSoFar === files.length) done();
         });
