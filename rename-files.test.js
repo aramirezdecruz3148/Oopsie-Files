@@ -9,6 +9,10 @@ const {
 } = require('./rename-files');
 
 describe('rename files', () => {
+  beforeAll(done => {
+    fs.mkdir('./fixtures', done);
+  });
+
   beforeEach(done => {
     createFiles('./fixtures', 100, done);
   });
@@ -25,10 +29,6 @@ describe('rename files', () => {
         });
       });
     });
-  });
-
-  afterAll(done => {
-    fs.rmdir('./fixtures', done);
   });
 
   it('gets all files in fixtures directory', done => {
