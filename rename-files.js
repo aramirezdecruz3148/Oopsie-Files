@@ -6,6 +6,13 @@ const readDirectory = (directory, callback) => {
   });
 };
 
+const rename = (path, newPath, callback) => {
+  fs.rename(path, newPath, err => {
+    callback(err);
+  });
+};
+
 module.exports = {
   readDirectory,
+  rename
 };
