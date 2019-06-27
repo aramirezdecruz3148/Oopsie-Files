@@ -2,10 +2,6 @@ const fs = require('fs');
 const { getAnimal, createFiles } = require('./create-files');
 
 describe('creating friends files', () => {
-  beforeAll(done => {
-    fs.mkdir('./fixtures', done);
-  });
-
   afterEach(done => {
     fs.readdir('./fixtures', (err, files) => {
       if(files.length === 0) done();
